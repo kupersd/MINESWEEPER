@@ -12,25 +12,40 @@
 <body onload="initGame()">
     <h1>MINESWEEPER</h1>
     <div class="game-container">
-    <div class="game-size">
-        <button data-size="0" onclick="changeBoardSize(this)">Begginner</button>
-        <button data-size="1" onclick="changeBoardSize(this)">Medium</button>
-        <button data-size="2" onclick="changeBoardSize(this)">Expert</button>
-    </div>
-        <div class = "timer">
-            TIME: <span class="clock">0</span>
+        <div class="game-size">
+            <button data-size="0" onclick="changeBoardSize(this)">Begginner</button>
+            <button data-size="1" onclick="changeBoardSize(this)">Medium</button>
+            <button data-size="2" onclick="changeBoardSize(this)">Expert</button>
+            <button onclick="setMinesManually()" class="set-mines">Set Mines</button>
         </div>
-        <div onclick="restart()" class="smiley">😀</div>
-        <div class = "lives" >LIVES: <span>3</span></div>
+        <div class="control-bar">
+            <div class="control-first-line">
+                <ul class="first-line">
+                    <li class="safe-key"> <button onclick="handleSafeKey(this)">Safe Key</button>
+                        <span>  3</span><span> clicks left</span> </li>
+                    <li><button onclick="undo()">Undo</button></li>
+                    <li class="hints"><button onclick="handleHint(this)">💡</button></li>
+                    <li class="hints"><button onclick="handleHint(this)">💡</button></li>
+                    <li class="hints"><button onclick="handleHint(this)">💡</button></li>
+                </ul>
+            </div>
+            <div class="timer">
+                TIME: <span class="clock">0</span>
+            </div>
+            <div onclick="restart()" class="smiley">😀</div>
+            <div class="lives">LIVES: <span>3</span></div>
+            <div class="mark-count">MINES LEFT: <span></span></div>
+        </div>
         <div class="board-container"></div>
     </div>
     <div class="top-scores">
-        <h3>Top Scores:</h3> 
-        <button>Begginner:  <span class = "beginner" >N/A</span></button>
-        <button>Medium:  <span class = "medium" >N/A</span></button>
-        <button>Expert:  <span class = "expert" >N/A</span></button>
+        <h3>Top Scores:</h3>
+        <button>Beginner: <span class="beginner">N/A</span></button>
+        <button>Medium: <span class="medium">N/A</span></button>
+        <button>Expert: <span class="expert">N/A</span></button>
     </div>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

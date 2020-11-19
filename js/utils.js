@@ -4,7 +4,8 @@ function printMat(mat, selector) {
     strHTML += '<tr>';
     for (var j = 0; j < mat[0].length; j++) {
       var cell = mat[i][j];
-      var className = gBoard[i][j].isShown? 'cell cell-' + i + '-' + j :'cell cell-covered cell-' + i + '-' + j;
+      var className = gBoard[i][j].isShown ? 'cell-' + i + '-' + j + ' cell' : 'cell-' + i + '-' + j + ' cell cell-covered';
+      className += gBoard[i][j].isMarked ? ' cell-flagged' : '';
       strHTML += `<td class=" ${className}" oncontextmenu="cellMarked(this)" onclick = "cellClicked(this, ${i}, ${j})"> ${cell} </td>`
     }
     strHTML += '</tr>'
@@ -47,11 +48,11 @@ function findEmptyLocations(board) {
 function shuffle(items) {
   var randIdx, keep, i;
   for (i = items.length - 1; i > 0; i--) {
-      randIdx = getRandomInt(0, items.length - 1);
+    randIdx = getRandomInt(0, items.length - 1);
 
-      keep = items[i];
-      items[i] = items[randIdx];
-      items[randIdx] = keep;
+    keep = items[i];
+    items[i] = items[randIdx];
+    items[randIdx] = keep;
   }
   return items;
 }
@@ -60,7 +61,7 @@ function shuffle(items) {
 function createNums(maxVal) {
   nums = []
   for (var i = 0; i < maxVal; i++) {
-      nums[i] = i + 1;
+    nums[i] = i + 1;
   }
   return nums;
 }
@@ -78,7 +79,7 @@ function getFormattedDate(ts) {     // gets YYYY-MM-DD
   var date = new Date(ts);
   // console.log(date)
   var dateStr = date.getFullYear() + '-'
-      + (date.getMonth() + 1) + '-' + date.getDate();
+    + (date.getMonth() + 1) + '-' + date.getDate();
   // console.log(str)
   return dateStr
 }
@@ -88,7 +89,7 @@ function getFormattedTime(ts) {     // gets HH:MM
 
   var date = new Date(ts);
   var timeStr = date.getHours() + ':' +
-      date.getMinutes();
+    date.getMinutes();
   return timeStr;
 }
 
